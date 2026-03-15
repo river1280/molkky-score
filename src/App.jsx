@@ -229,9 +229,9 @@ export default function App() {
             marginBottom: "16px",
           }}
         >
-          <h1 style={{ margin: 0, fontSize: "48px", textAlign: "center" }}>モルック 点計算アプリ</h1>
+          <h1 style={{ margin: 0, fontSize: "24px", textAlign: "center" }}>モルック 点計算アプリ</h1>
           <p style={{ marginTop: "12px", textAlign: "center", color: "#64748b", fontSize: "18px" }}>
-            50点ちょうどで勝利 / 50点超えは25点に戻る / 3回ミスで脱落
+            50点ちょうどで勝利 / 50点超えは25点に戻る / 3回連続ミスで脱落
           </p>
           <div
             style={{
@@ -460,6 +460,39 @@ export default function App() {
             <p>・50点を超えたら25点に戻る</p>
             <p>・ミス3回連続で脱落</p>
             <p>・点を入れるとミス回数は0に戻る</p>
+          </div>
+          <div
+            style={{
+              background: "white",
+              borderRadius: "24px",
+              padding: "24px",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+              marginTop: "16px",
+            }}
+          >
+            <h2 style={{ marginTop: 0, fontSize: "28px" }}>おすすめのモルック用品</h2>
+            <p style={{ color: "#64748b" }}>
+              ※このリンクはアフィリエイトリンクを含みます
+            </p>
+
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <a
+                href="https://a.r10.to/hPH2Gw"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-block",
+                  padding: "14px 18px",
+                  borderRadius: "14px",
+                  background: "#bf0000",
+                  color: "white",
+                  textDecoration: "none",
+                  fontWeight: "700",
+                }}
+              >
+                モルックセットを楽天で見る
+              </a>
+            </div>
           </div>
         </div>
       </div>
