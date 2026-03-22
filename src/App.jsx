@@ -194,19 +194,20 @@ export default function App() {
   };
 
   const cardStyle = (isCurrent) => ({
-  background: isCurrent ? "#dbeafe" : "white",
-  border: isCurrent ? "3px solid #2563eb" : "1px solid #cbd5e1",
-  borderRadius: "20px",
-  padding: "16px",
-  boxShadow: isCurrent
-    ? "0 4px 12px rgba(37, 99, 235, 0.25)"
-    : "0 1px 3px rgba(0,0,0,0.05)",
-  transition: "all 0.2s ease",});
+    background: isCurrent ? "#dbeafe" : "white",
+    border: isCurrent ? "3px solid #2563eb" : "1px solid #cbd5e1",
+    borderRadius: "20px",
+    padding: "16px",
+    boxShadow: isCurrent
+      ? "0 4px 12px rgba(37, 99, 235, 0.25)"
+      : "0 1px 3px rgba(0,0,0,0.05)",
+    transition: "all 0.2s ease",
+  });
 
   const buttonBase = {
-    padding: "14px 18px",
+    padding: "10px 12px",
     borderRadius: "14px",
-    fontSize: "16px",
+    fontSize: "14px",
     fontWeight: "700",
     cursor: "pointer",
   };
@@ -221,7 +222,7 @@ export default function App() {
           '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif',
       }}
     >
-      <div style={{ maxWidth: "1400px", margin: "0 auto", paddingBottom: "180px" }}>
+      <div style={{ maxWidth: "1400px", margin: "0 auto", paddingBottom: "220px" }}>
         <div
           style={{
             background: "white",
@@ -277,11 +278,11 @@ export default function App() {
                   onClick={() => removePlayer(player.id)}
                   style={{
                     ...buttonBase,
-                    padding: "10px 12px",
                     background: "#fff1f2",
                     color: "#b91c1c",
                     border: "1px solid #fecdd3",
                     flexShrink: 0,
+                    minHeight: "42px",
                   }}
                 >
                   削除
@@ -291,153 +292,169 @@ export default function App() {
               <div style={{ fontSize: "40px", fontWeight: "800", textAlign: "center", color: "#334155" }}>
                 {player.score}
               </div>
-              <div style={{ textAlign: "center", marginTop: "12px", color: "#64748b", fontSize: "18px" }}>ミス: {player.misses}</div>
-              <div style={{
-                textAlign: "center",
-                marginTop: "12px",
-                fontWeight: "700",
-                fontSize: "18px",
-                color: player.won
-                ? "#15803d"
-                : player.isOut
-                ? "#b91c1c"
-                : currentPlayerId === player.id
-                ? "#1d4ed8"
-                : "#475569",
+              <div style={{ textAlign: "center", marginTop: "12px", color: "#64748b", fontSize: "18px" }}>
+                ミス: {player.misses}
+              </div>
+              <div
+                style={{
+                  textAlign: "center",
+                  marginTop: "12px",
+                  fontWeight: "700",
+                  fontSize: "18px",
+                  color: player.won
+                    ? "#15803d"
+                    : player.isOut
+                    ? "#b91c1c"
+                    : currentPlayerId === player.id
+                    ? "#1d4ed8"
+                    : "#475569",
                 }}
               >
                 {player.won ? "勝利" : player.isOut ? "脱落" : currentPlayerId === player.id ? "手番" : "待機"}
-                </div>
+              </div>
             </div>
           ))}
         </div>
 
         <div
-  style={{
-    position: "fixed",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 1000,
-    background: "#f8fafc",
-    borderTop: "1px solid #cbd5e1",
-    boxShadow: "0 -4px 12px rgba(0,0,0,0.08)",
-    padding: "8px",
-  }}
->
-  <div
-    style={{
-      maxWidth: "1400px",
-      margin: "0 auto",
-      background: "white",
-      borderRadius: "20px",
-      padding: "8px",
-    }}
-  >
-    <div style={{ fontSize: "16px", fontWeight: "700", marginBottom: "6px" }}>
-      得点入力
-    </div>
-
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(70px, 1fr))",
-        gap: "8px",
-        marginBottom: "12px",
-      }}
-    >
-      {POINT_OPTIONS.map((point) => (
-        <button
-          key={point}
-          onClick={() => setSelectedPoint(point)}
           style={{
-            ...buttonBase,
-            height: "40px",
-            background: selectedPoint === point ? "#0f172a" : "white",
-            color: selectedPoint === point ? "white" : "#111827",
-            border: "1px solid #cbd5e1",
-            fontSize: "20px",
+            position: "fixed",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 1000,
+            background: "#f8fafc",
+            borderTop: "1px solid #cbd5e1",
+            boxShadow: "0 -4px 12px rgba(0,0,0,0.08)",
+            padding: "6px",
           }}
         >
-          {point}
-        </button>
-      ))}
-    </div>
+          <div
+            style={{
+              maxWidth: "1400px",
+              margin: "0 auto",
+              background: "white",
+              borderRadius: "20px",
+              padding: "8px",
+            }}
+          >
+            <div style={{ fontSize: "16px", fontWeight: "700", marginBottom: "6px", textAlign: "center" }}>
+              得点入力
+            </div>
 
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-        gap: "8px",
-      }}
-    >
-      <button
-        onClick={() => applyTurn("score", selectedPoint)}
-        style={{
-          ...buttonBase,
-          background: "#0f172a",
-          color: "white",
-          border: "none",
-          minHeight: "52px",
-        }}
-      >
-        {selectedPoint}点を確定
-      </button>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(6, 1fr)",
+                gap: "6px",
+                marginBottom: "8px",
+              }}
+            >
+              {POINT_OPTIONS.map((point) => (
+                <button
+                  key={point}
+                  onClick={() => setSelectedPoint(point)}
+                  style={{
+                    ...buttonBase,
+                    height: "42px",
+                    background: selectedPoint === point ? "#0f172a" : "white",
+                    color: selectedPoint === point ? "white" : "#111827",
+                    border: "1px solid #cbd5e1",
+                    fontSize: "16px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    lineHeight: "1",
+                    textAlign: "center",
+                    padding: 0,
+                  }}
+                >
+                  {point}
+                </button>
+              ))}
+            </div>
 
-      <button
-        onClick={() => applyTurn("miss")}
-        style={{
-          ...buttonBase,
-          background: "#fff7ed",
-          color: "#9a3412",
-          border: "1px solid #fdba74",
-          minHeight: "52px",
-        }}
-      >
-        ミスを記録
-      </button>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: "6px",
+              }}
+            >
+              <button
+                onClick={() => applyTurn("score", selectedPoint)}
+                style={{
+                  ...buttonBase,
+                  background: "#0f172a",
+                  color: "white",
+                  border: "none",
+                  minHeight: "40px",
+                  padding: "8px 10px",
+                }}
+              >
+                {selectedPoint}点を確定
+              </button>
 
-      <button
-        onClick={undoLast}
-        style={{
-          ...buttonBase,
-          background: "#f8fafc",
-          color: "#334155",
-          border: "1px solid #cbd5e1",
-          minHeight: "52px",
-        }}
-      >
-        取り消し
-      </button>
+              <button
+                onClick={() => applyTurn("miss")}
+                style={{
+                  ...buttonBase,
+                  background: "#fff7ed",
+                  color: "#9a3412",
+                  border: "1px solid #fdba74",
+                  minHeight: "40px",
+                  padding: "8px 10px",
+                }}
+              >
+                ミスを記録
+              </button>
 
-      <button
-        onClick={resetGame}
-        style={{
-          ...buttonBase,
-          background: "#f8fafc",
-          color: "#334155",
-          border: "1px solid #cbd5e1",
-          minHeight: "52px",
-        }}
-      >
-        リセット
-      </button>
+              <button
+                onClick={undoLast}
+                style={{
+                  ...buttonBase,
+                  background: "#f8fafc",
+                  color: "#334155",
+                  border: "1px solid #cbd5e1",
+                  minHeight: "40px",
+                  padding: "8px 10px",
+                }}
+              >
+                取り消し
+              </button>
 
-      <button
-        onClick={addPlayer}
-        style={{
-          ...buttonBase,
-          background: "#eff6ff",
-          color: "#1d4ed8",
-          border: "1px solid #93c5fd",
-          minHeight: "52px",
-        }}
-      >
-        プレイヤーを追加
-      </button>
-    </div>
-  </div>
-</div>
+              <button
+                onClick={resetGame}
+                style={{
+                  ...buttonBase,
+                  background: "#f8fafc",
+                  color: "#334155",
+                  border: "1px solid #cbd5e1",
+                  minHeight: "40px",
+                  padding: "8px 10px",
+                }}
+              >
+                リセット
+              </button>
+
+              <button
+                onClick={addPlayer}
+                style={{
+                  ...buttonBase,
+                  background: "#eff6ff",
+                  color: "#1d4ed8",
+                  border: "1px solid #93c5fd",
+                  minHeight: "40px",
+                  padding: "8px 10px",
+                }}
+              >
+                プレイヤーを追加
+              </button>
+
+              <div />
+            </div>
+          </div>
+        </div>
 
         <div
           style={{
@@ -492,6 +509,7 @@ export default function App() {
             <p>・ミス3回連続で脱落</p>
             <p>・点を入れるとミス回数は0に戻る</p>
           </div>
+
           <div
             style={{
               background: "white",
@@ -502,9 +520,7 @@ export default function App() {
             }}
           >
             <h2 style={{ marginTop: 0, fontSize: "28px" }}>おすすめのモルック用品</h2>
-            <p style={{ color: "#64748b" }}>
-              ※このリンクはアフィリエイトリンクを含みます
-            </p>
+            <p style={{ color: "#64748b" }}>※このリンクはアフィリエイトリンクを含みます</p>
 
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               <a
