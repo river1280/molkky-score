@@ -322,7 +322,7 @@ export default function App() {
     background: "#f8fafc",
     borderTop: "1px solid #cbd5e1",
     boxShadow: "0 -4px 12px rgba(0,0,0,0.08)",
-    padding: "12px",
+    padding: "8px",
   }}
 >
   <div
@@ -331,10 +331,10 @@ export default function App() {
       margin: "0 auto",
       background: "white",
       borderRadius: "20px",
-      padding: "16px",
+      padding: "8px",
     }}
   >
-    <div style={{ fontSize: "24px", fontWeight: "700", marginBottom: "12px" }}>
+    <div style={{ fontSize: "16px", fontWeight: "700", marginBottom: "6px" }}>
       得点入力
     </div>
 
@@ -352,7 +352,7 @@ export default function App() {
           onClick={() => setSelectedPoint(point)}
           style={{
             ...buttonBase,
-            height: "52px",
+            height: "40px",
             background: selectedPoint === point ? "#0f172a" : "white",
             color: selectedPoint === point ? "white" : "#111827",
             border: "1px solid #cbd5e1",
